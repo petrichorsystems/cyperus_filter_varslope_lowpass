@@ -40,10 +40,23 @@ const size_t sample_size = sizeof (jack_default_audio_sample_t) ;
 jack_port_t **output_port ;
 static jack_port_t **input_port ;
 
+int global_is_initialized = 0;
+
+struct cyperus_parameters cyperus_param;
 
 float dsplogic( float insample ) {
   float outsample = 0.0;
 
+  if( !global_is_initialized ) {
+    cyperus_filter_varslope_lowpass_init(&cyperus_param,
+                                         jack_sr);
+    global_is_initialized = 1;
+  }
+
+  cyperus_filter_varslope_lowpass(&cyperus_param,
+                                  jack_sr,
+                                  0);
+  
   printf("insample: %f\n", insample);
   outsample = insample;
 
