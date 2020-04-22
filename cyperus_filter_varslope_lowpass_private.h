@@ -14,8 +14,8 @@
  * Validation result: Not run
  */
 
-#ifndef RTW_HEADER_cyperus_lowpass_module_private_h_
-#define RTW_HEADER_cyperus_lowpass_module_private_h_
+#ifndef RTW_HEADER_cyperus_filter_varslope_lowpass_private_h_
+#define RTW_HEADER_cyperus_filter_varslope_lowpass_private_h_
 #include "rtwtypes.h"
 #include "builtin_typeid_types.h"
 #include "multiword_types.h"
@@ -34,4 +34,5 @@ extern float rt_remd_snf(float u0, float u1);
 extern float rt_hypotd_snf(float u0, float u1);
 extern float rt_atan2d_snf(float u0, float u1);
 
-#endif                        /* RTW_HEADER_cyperus_lowpass_module_private_h_ */
+#endif
+

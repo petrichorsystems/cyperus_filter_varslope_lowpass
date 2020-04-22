@@ -17,8 +17,8 @@
 #include <math.h>
 
 #include "rt_nonfinite.h"
-#include "cyperus_lowpass_module.h"
-#include "cyperus_lowpass_module_private.h"
+#include "cyperus_filter_varslope_lowpass.h"
+#include "cyperus_filter_varslope_lowpass_private.h"
 
 /* Block signals (default storage) */
 B_cyperus_lowpass_module_T cyperus_lowpass_module_B;
@@ -4146,10 +4146,6 @@ struct cyperus_parameters {
 };
 
 void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr) {
-
-
-    /* Registration code */
-
   /* initialize non-finites */
   rt_InitInfAndNaN(sizeof(float));
   
