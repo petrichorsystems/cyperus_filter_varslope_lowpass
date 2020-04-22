@@ -244,6 +244,10 @@ extern void cyperus_lowpass_module_terminate(void);
 /* Real-time Model object */
 extern RT_MODEL_cyperus_lowpass_modu_T *const cyperus_lowpass_module_M;
 
+
+void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr);
+float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos);
+
 /*-
  * The generated code includes comments that allow you to trace directly
  * back to the appropriate location in the model.  The basic format
