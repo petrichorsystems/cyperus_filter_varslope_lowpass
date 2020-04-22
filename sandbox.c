@@ -48,19 +48,19 @@ float dsplogic( float insample ) {
   float outsample = 0.0;
 
   if( !global_is_initialized ) {
+    cyperus_param.amp = 1.0;
+    cyperus_param.slope = 10;
+    cyperus_param.fs = 440;
     cyperus_filter_varslope_lowpass_init(&cyperus_param,
                                          jack_sr);
     global_is_initialized = 1;
   }
 
-  cyperus_filter_varslope_lowpass(&cyperus_param,
-                                  jack_sr,
-                                  0);
-  
-  printf("insample: %f\n", insample);
-  outsample = insample;
-
-  return outsample;
+  cyperus_param.in = insample;
+  outsample = cyperus_filter_varslope_lowpass(&cyperus_param,
+                                              jack_sr,
+                                              0);
+  printf("oustample: %f\n", outsample);
 }
 
 static void*
@@ -182,7 +182,7 @@ int main(void)
   pthread_create(&dspthreadid, NULL, dspthread, 0);
 
   while(1) {
-
+    sleep(1);
   };
 
   return 0;
