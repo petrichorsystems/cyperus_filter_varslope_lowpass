@@ -26,8 +26,6 @@
 # define cyperus_lowpass_module_COMMON_INCLUDES_
 
 #include "rtwtypes.h"
-#include "rtw_continuous.h"
-#include "rtw_solver.h"
 
 #endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
 
