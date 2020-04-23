@@ -28,8 +28,6 @@
 
 #endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
 
-#include "cyperus_lowpass_module_types.h"
-
 /* Shared type includes */
 #include "rtGetNaN.h"
 #include "rt_nonfinite.h"

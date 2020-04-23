@@ -18,7 +18,6 @@
 
 #include "rt_nonfinite.h"
 #include "cyperus_filter_varslope_lowpass.h"
-#include "cyperus_filter_varslope_lowpass_private.h"
 
 
 typedef struct {
