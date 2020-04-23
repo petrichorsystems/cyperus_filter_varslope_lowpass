@@ -18,7 +18,6 @@
 #define RTW_HEADER_cyperus_filter_varslope_lowpass_private_h_
 #include "rtwtypes.h"
 #include "builtin_typeid_types.h"
-#include "multiword_types.h"
 
 /* Private macros used by the generated code to access rtModel */
 #ifndef rtmSetTFinal

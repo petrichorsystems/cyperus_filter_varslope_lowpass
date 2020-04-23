@@ -18,7 +18,7 @@
 #define RTW_HEADER_cyperus_lowpass_module_types_h_
 #include "rtwtypes.h"
 #include "builtin_typeid_types.h"
-#include "multiword_types.h"
+
 #ifndef struct_tag_spGKsvEVm7uA89hv31XX4LH
 #define struct_tag_spGKsvEVm7uA89hv31XX4LH
 
