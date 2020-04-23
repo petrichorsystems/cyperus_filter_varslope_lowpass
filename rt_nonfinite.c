@@ -19,9 +19,8 @@
  *      Function to initialize non-finites,
  *      (Inf, NaN and -Inf).
  */
+#include "dsp_math_utils.h"
 #include "rt_nonfinite.h"
-#include "rtGetNaN.h"
-#include "rtGetInf.h"
 #define NumBitsPerChar                 8U
 
 float rtInf;

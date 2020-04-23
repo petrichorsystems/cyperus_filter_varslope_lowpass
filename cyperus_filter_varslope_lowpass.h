@@ -32,9 +32,8 @@
 #endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
 
 /* Shared type includes */
-#include "rtGetNaN.h"
+#include "dsp_math_utils.h"
 #include "rt_nonfinite.h"
-#include "rtGetInf.h"
 
 #define RT_PI 3.14159265358979323846
 

@@ -18,6 +18,7 @@
 #define rt_nonfinite_h_
 #include <stddef.h>
 #include <stdint.h>
+
 #include "rtwtypes.h"
 
 extern float rtInf;

@@ -16,13 +16,17 @@
  * Validation result: Not run
  */
 
-#ifndef RTW_HEADER_rtGetNaN_h_
-#define RTW_HEADER_rtGetNaN_h_
+#ifndef dsp_math_utils_h_
+#define dsp_math_utils_h_
 #include <stddef.h>
 #include "rtwtypes.h"
 #include "rt_nonfinite.h"
 
 extern float rtGetNaN(void);
 extern float rtGetNaNF(void);
+extern float rtGetInf(void);
+extern float rtGetInfF(void);
+extern float rtGetMinusInf(void);
+extern float rtGetMinusInfF(void);
 
 #endif                                 /* RTW_HEADER_rtGetNaN_h_ */
