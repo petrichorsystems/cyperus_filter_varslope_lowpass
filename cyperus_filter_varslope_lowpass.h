@@ -26,9 +26,7 @@
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
 #include "rt_logging.h"
-#include "HostLib_MMFile.h"
-#include "HostLib_Multimedia.h"
-#include "HostLib_Audio.h"
+
 #endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
 
 #include "cyperus_lowpass_module_types.h"
