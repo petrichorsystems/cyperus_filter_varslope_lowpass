@@ -10,8 +10,6 @@
 #ifndef RTW_MATLOGGING_H__
 #define RTW_MATLOGGING_H__
 
-#include "sl_types_def.h" /* DTypeId */
-
 /*
  * The RTWLogSignalInfo and RTWLogInfo structures are for use by
  * the Real-Time Workshop and should not be used by S-functions.
