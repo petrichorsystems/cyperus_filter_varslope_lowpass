@@ -50,7 +50,7 @@ float dsplogic( float insample ) {
   if( !global_is_initialized ) {
     cyperus_param.amp = 1.0;
     cyperus_param.slope = 10;
-    cyperus_param.fs = 440;
+    cyperus_param.fc = .0001;
     cyperus_filter_varslope_lowpass_init(&cyperus_param,
                                          jack_sr);
     global_is_initialized = 1;
@@ -60,7 +60,6 @@ float dsplogic( float insample ) {
   outsample = cyperus_filter_varslope_lowpass(&cyperus_param,
                                               jack_sr,
                                               0);
-  printf("oustample: %f\n", outsample);
   return outsample;
 }
 
@@ -182,8 +181,16 @@ int main(void)
   allocate_ports(1, 1);
   pthread_create(&dspthreadid, NULL, dspthread, 0);
 
+  int count = 0;
   while(1) {
     sleep(1);
+    if( (count % 1) == 0 ) {
+      cyperus_param.fc *= 1.333333f;
+      printf("cyperus_param.fc: %f\n", cyperus_param.fc);
+      if( cyperus_param.fc <= 1.0f )
+        cyperus_filter_varslope_lowpass_edit(&cyperus_param);
+    }
+    count += 0.5;
   };
 
   return 0;

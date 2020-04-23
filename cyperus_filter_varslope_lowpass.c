@@ -4063,8 +4063,12 @@ void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int
     filter->W0_FILT_STATES[i] = 0.0f;
   }
   
-  cyperus_lo_designVarSlopeFilter(10, .0001, filter->B, filter->A);  
+  cyperus_lo_designVarSlopeFilter(filter->slope, filter->fc, filter->B, filter->A);  
 } /* cyperus_filter_varslope_lowpass_init */
+
+void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter) {
+  cyperus_lo_designVarSlopeFilter(filter->slope, filter->fc, filter->B, filter->A);
+}
 
 float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos) {
   float insample = filter->in;

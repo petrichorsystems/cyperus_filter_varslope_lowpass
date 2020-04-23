@@ -123,7 +123,7 @@ struct cyperus_parameters {
   float y4;
 
   int slope;
-  int fs;
+  float fc;
   float B[12];
   float A[8];
 
@@ -247,6 +247,7 @@ extern RT_MODEL_cyperus_lowpass_modu_T *const cyperus_lowpass_module_M;
 
 void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr);
 float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos);
+void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter);
 
 /*-
  * The generated code includes comments that allow you to trace directly
