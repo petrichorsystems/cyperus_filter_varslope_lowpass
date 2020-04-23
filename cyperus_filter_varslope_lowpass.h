@@ -16,12 +16,15 @@
 
 #ifndef RTW_HEADER_cyperus_lowpass_module_h_
 #define RTW_HEADER_cyperus_lowpass_module_h_
+
 #include <float.h>
 #include <math.h>
 #include <string.h>
 #include <stddef.h>
+
 #ifndef cyperus_lowpass_module_COMMON_INCLUDES_
 # define cyperus_lowpass_module_COMMON_INCLUDES_
+
 #include "rtwtypes.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
@@ -31,7 +34,6 @@
 /* Shared type includes */
 #include "rtGetNaN.h"
 #include "rt_nonfinite.h"
-
 #include "rtGetInf.h"
 
 #define RT_PI 3.14159265358979323846
