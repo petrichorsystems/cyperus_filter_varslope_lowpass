@@ -20,18 +20,10 @@
 #include "cyperus_filter_varslope_lowpass.h"
 #include "cyperus_filter_varslope_lowpass_private.h"
 
-/* Block signals (default storage) */
-B_cyperus_lowpass_module_T cyperus_lowpass_module_B;
-
-/* Block states (default storage) */
-DW_cyperus_lowpass_module_T cyperus_lowpass_module_DW;
-
-
 
 typedef struct {
   double re, im;
 } complex_float32_t;
-
 
 
 /* Forward declaration for local functions */

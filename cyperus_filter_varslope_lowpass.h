@@ -25,7 +25,6 @@
 #include "rtwtypes.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
-#include "rt_logging.h"
 
 #endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
 
@@ -128,119 +127,8 @@ struct cyperus_parameters {
   float W0_FILT_STATES[16];
 };
 
-/* Macros for accessing real-time model data structure */
-#ifndef rtmGetFinalTime
-# define rtmGetFinalTime(rtm)          ((rtm)->Timing.tFinal)
-#endif
+extern void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr);
+extern float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos);
+extern void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter);
 
-#ifndef rtmGetRTWLogInfo
-# define rtmGetRTWLogInfo(rtm)         ((rtm)->rtwLogInfo)
-#endif
-
-#ifndef rtmGetErrorStatus
-# define rtmGetErrorStatus(rtm)        ((rtm)->errorStatus)
-#endif
-
-#ifndef rtmSetErrorStatus
-# define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
-#endif
-
-#ifndef rtmGetStopRequested
-# define rtmGetStopRequested(rtm)      ((rtm)->Timing.stopRequestedFlag)
-#endif
-
-#ifndef rtmSetStopRequested
-# define rtmSetStopRequested(rtm, val) ((rtm)->Timing.stopRequestedFlag = (val))
-#endif
-
-#ifndef rtmGetStopRequestedPtr
-# define rtmGetStopRequestedPtr(rtm)   (&((rtm)->Timing.stopRequestedFlag))
-#endif
-
-#ifndef rtmGetT
-# define rtmGetT(rtm)                  ((rtm)->Timing.taskTime0)
-#endif
-
-#ifndef rtmGetTFinal
-# define rtmGetTFinal(rtm)             ((rtm)->Timing.tFinal)
-#endif
-
-#ifndef rtmGetTPtr
-# define rtmGetTPtr(rtm)               (&(rtm)->Timing.taskTime0)
-#endif
-
-/* Block signals (default storage) */
-typedef struct {
-  real_T FromMultimediaFile[2048];     /* '<Root>/From Multimedia File' */
-  real_T MATLABSystem[2048];           /* '<Root>/MATLAB System' */
-  real_T dv0[2048];
-} B_cyperus_lowpass_module_T;
-
-/* Block states (default storage) for system '<Root>' */
-typedef struct {
-  CyperusLowpassFilter_cyperus__T obj; /* '<Root>/MATLAB System' */
-  real_T FromMultimediaFile_HostLib[137];/* '<Root>/From Multimedia File' */
-  real_T FromMultimediaFile_AudioInfo[5];/* '<Root>/From Multimedia File' */
-  real_T FromMultimediaFile_VideoInfo[11];/* '<Root>/From Multimedia File' */
-  uint64m_T thisPtr;                   /* '<Root>/MATLAB System' */
-  uint8_T AudioDeviceWriter_AudioDeviceLi[1096];/* '<Root>/Audio Device Writer' */
-  boolean_T objisempty;                /* '<Root>/MATLAB System' */
-  boolean_T thisPtr_not_empty;         /* '<Root>/MATLAB System' */
-  boolean_T isInitialized;             /* '<Root>/MATLAB System' */
-} DW_cyperus_lowpass_module_T;
-
-/* Parameters (default storage) */
-struct P_cyperus_lowpass_module_T_ {
-  real_T MATLABSystem_PassbandFrequency;/* Expression: 672.9902424112955
-                                         * Referenced by: '<Root>/MATLAB System'
-                                         */
-  real_T MATLABSystem_Amplitude;       /* Expression: 0.2027734502156575
-                                        * Referenced by: '<Root>/MATLAB System'
-                                        */
-  real_T MATLABSystem_Slope;           /* Expression: 10
-                                        * Referenced by: '<Root>/MATLAB System'
-                                        */
-  real_T AudioDeviceWriter_P1;         /* Expression: 0
-                                        * Referenced by: '<Root>/Audio Device Writer'
-                                        */
-};
-
-/* Block parameters (default storage) */
-extern P_cyperus_lowpass_module_T cyperus_lowpass_module_P;
-
-/* Block signals (default storage) */
-extern B_cyperus_lowpass_module_T cyperus_lowpass_module_B;
-
-/* Block states (default storage) */
-extern DW_cyperus_lowpass_module_T cyperus_lowpass_module_DW;
-
-/* Model entry point functions */
-extern void cyperus_lowpass_module_initialize(void);
-extern void cyperus_lowpass_module_step(void);
-extern void cyperus_lowpass_module_terminate(void);
-
-/* Real-time Model object */
-extern RT_MODEL_cyperus_lowpass_modu_T *const cyperus_lowpass_module_M;
-
-
-void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr);
-float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos);
-void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter);
-
-/*-
- * The generated code includes comments that allow you to trace directly
- * back to the appropriate location in the model.  The basic format
- * is <system>/block_name, where system is the system number (uniquely
- * assigned by Simulink) and block_name is the name of the block.
- *
- * Use the MATLAB hilite_system command to trace the generated code back
- * to the model.  For example,
- *
- * hilite_system('<S3>')    - opens system 3
- * hilite_system('<S3>/Kp') - opens and selects block Kp which resides in S3
- *
- * Here is the system hierarchy for this model
- *
- * '<Root>' : 'cyperus_lowpass_module'
- */
 #endif                                /* RTW_HEADER_cyperus_lowpass_module_h_ */
