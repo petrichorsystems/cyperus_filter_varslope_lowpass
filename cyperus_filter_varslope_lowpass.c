@@ -17,7 +17,6 @@
 #include <math.h>
 
 #include "dsp_math_utils.h"
-#include "rt_nonfinite.h"
 #include "cyperus_filter_varslope_lowpass.h"
 
 

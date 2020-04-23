@@ -33,7 +33,6 @@
 
 /* Shared type includes */
 #include "dsp_math_utils.h"
-#include "rt_nonfinite.h"
 
 #define RT_PI 3.14159265358979323846
 

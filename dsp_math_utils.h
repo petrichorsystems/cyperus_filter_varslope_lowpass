@@ -18,9 +18,10 @@
 
 #ifndef dsp_math_utils_h_
 #define dsp_math_utils_h_
+#include <stdint.h>
 #include <stddef.h>
+
 #include "rtwtypes.h"
-#include "rt_nonfinite.h"
 
 extern float rtGetNaN(void);
 extern float rtGetNaNF(void);
@@ -28,5 +29,39 @@ extern float rtGetInf(void);
 extern float rtGetInfF(void);
 extern float rtGetMinusInf(void);
 extern float rtGetMinusInfF(void);
+
+extern float rtInf;
+extern float rtMinusInf;
+extern float rtNaN;
+extern float rtInfF;
+extern float rtMinusInfF;
+extern float rtNaNF;
+extern void rt_InitInfAndNaN(size_t realSize);
+extern boolean_T rtIsInf(float value);
+extern boolean_T rtIsInfF(float value);
+extern boolean_T rtIsNaN(float value);
+extern boolean_T rtIsNaNF(float value);
+
+typedef struct {
+  struct {
+    uint32_t wordH;
+    uint32_t wordL;
+  } words;
+} BigEndianIEEEDouble;
+
+typedef struct {
+  struct {
+    uint32_t wordL;
+    uint32_t wordH;
+  } words;
+} LittleEndianIEEEDouble;
+
+typedef struct {
+  union {
+    float wordLreal;
+    uint32_t wordLuint;
+  } wordL;
+} IEEESingle;
+
 
 #endif                                 /* RTW_HEADER_rtGetNaN_h_ */
