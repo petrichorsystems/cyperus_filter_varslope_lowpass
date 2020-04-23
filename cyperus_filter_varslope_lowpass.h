@@ -34,8 +34,10 @@
 #include "multiword_types.h"
 #include "rtGetNaN.h"
 #include "rt_nonfinite.h"
-#include "rt_defines.h"
+
 #include "rtGetInf.h"
+
+#define RT_PI 3.14159265358979323846
 
 struct cyperus_parameters {
   /* block processing */
