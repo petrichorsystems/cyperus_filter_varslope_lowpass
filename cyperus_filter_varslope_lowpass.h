@@ -205,26 +205,6 @@ struct P_cyperus_lowpass_module_T_ {
                                         */
 };
 
-/* Real-time Model Data Structure */
-struct tag_RTM_cyperus_lowpass_modul_T {
-  const char_T *errorStatus;
-  RTWLogInfo *rtwLogInfo;
-
-  /*
-   * Timing:
-   * The following substructure contains information regarding
-   * the timing information for the model.
-   */
-  struct {
-    time_T taskTime0;
-    uint32_T clockTick0;
-    uint32_T clockTickH0;
-    time_T stepSize0;
-    time_T tFinal;
-    boolean_T stopRequestedFlag;
-  } Timing;
-};
-
 /* Block parameters (default storage) */
 extern P_cyperus_lowpass_module_T cyperus_lowpass_module_P;
 

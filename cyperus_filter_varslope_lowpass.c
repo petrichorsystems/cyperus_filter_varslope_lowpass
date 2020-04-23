@@ -26,11 +26,6 @@ B_cyperus_lowpass_module_T cyperus_lowpass_module_B;
 /* Block states (default storage) */
 DW_cyperus_lowpass_module_T cyperus_lowpass_module_DW;
 
-/* Real-time model */
-RT_MODEL_cyperus_lowpass_modu_T cyperus_lowpass_module_M_;
-RT_MODEL_cyperus_lowpass_modu_T *const cyperus_lowpass_module_M =
-  &cyperus_lowpass_module_M_;
-
 
 
 typedef struct {
