@@ -81,13 +81,6 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
   int32_T B_size[2], float A_data[], int32_T A_size[2]);
 static void cyperus_lo_designVarSlopeFilter(float Slope, float Fc, float B[12],
   float A[8]);
-static void cyperus_lowpass_SystemCore_step(dspcodegen_BiquadFilter_cyper_T *obj,
-  const float varargin_1[2048], const float varargin_2[12], const float
-  varargin_3[8], float varargout_1[2048]);
-static void matlabCodegenHandle_matlabCodeg(CyperusLowpassFilter_cyperus__T *obj);
-static void cyperus_lowp_SystemCore_release(dspcodegen_BiquadFilter_cyper_T *obj);
-static void cyperus_lowpa_SystemCore_delete(dspcodegen_BiquadFilter_cyper_T *obj);
-static void matlabCodegenHandle_matlabCod_c(dspcodegen_BiquadFilter_cyper_T *obj);
 
 
 float rt_roundd_snf(float u)
