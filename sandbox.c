@@ -61,6 +61,7 @@ float dsplogic( float insample ) {
                                               jack_sr,
                                               0);
   printf("oustample: %f\n", outsample);
+  return outsample;
 }
 
 static void*
