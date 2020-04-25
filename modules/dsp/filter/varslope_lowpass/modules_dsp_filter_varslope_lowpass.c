@@ -4034,7 +4034,7 @@ static void cyperus_lo_designVarSlopeFilter(float Slope, float Fc, float B[12],
   }
 }
 
-void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr) {
+void modules_dsp_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr) {
   /* initialize non-finites */
   int i;
   rt_InitInfAndNaN(sizeof(float));
@@ -4044,11 +4044,11 @@ void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int
   cyperus_lo_designVarSlopeFilter(filter->slope, filter->fc, filter->B, filter->A);  
 } /* cyperus_filter_varslope_lowpass_init */
 
-void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter) {
+void modules_dsp_filter_varslope_lowpass_edit(struct cyperus_parameters *filter) {
   cyperus_lo_designVarSlopeFilter(filter->slope, filter->fc, filter->B, filter->A);
 }
 
-float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos) {
+float modules_dsp_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos) {
   float insample = filter->in;
   
   void *audio;

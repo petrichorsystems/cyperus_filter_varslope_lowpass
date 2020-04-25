@@ -51,15 +51,15 @@ float dsplogic( float insample ) {
     cyperus_param.amp = 1.0;
     cyperus_param.slope = 10;
     cyperus_param.fc = .0001;
-    cyperus_filter_varslope_lowpass_init(&cyperus_param,
-                                         jack_sr);
+    modules_dsp_filter_varslope_lowpass_init(&cyperus_param,
+                                             jack_sr);
     global_is_initialized = 1;
   }
 
   cyperus_param.in = insample;
-  outsample = cyperus_filter_varslope_lowpass(&cyperus_param,
-                                              jack_sr,
-                                              0);
+  outsample = modules_dsp_filter_varslope_lowpass(&cyperus_param,
+                                                  jack_sr,
+                                                  0);
   return outsample;
 }
 
@@ -188,7 +188,7 @@ int main(void)
       cyperus_param.fc *= 1.333333f;
       printf("cyperus_param.fc: %f\n", cyperus_param.fc);
       if( cyperus_param.fc <= 1.0f )
-        cyperus_filter_varslope_lowpass_edit(&cyperus_param);
+        modules_dsp_filter_varslope_lowpass_edit(&cyperus_param);
     }
     count += 0.5;
   };

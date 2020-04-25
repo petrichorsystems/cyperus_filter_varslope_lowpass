@@ -117,8 +117,8 @@ struct cyperus_parameters {
   float W0_FILT_STATES[16];
 };
 
-extern void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr);
-extern float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos);
-extern void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter);
+extern void modules_dsp_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int jack_sr);
+extern float modules_dsp_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos);
+extern void modules_dsp_filter_varslope_lowpass_edit(struct cyperus_parameters *filter);
 
-#endif                                /* RTW_HEADER_cyperus_lowpass_module_h_ */
+#endif
