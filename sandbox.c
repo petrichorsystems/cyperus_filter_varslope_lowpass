@@ -23,7 +23,7 @@
 #include <jack/jack.h> 
 
 #include "rtqueue.h"
-#include "cyperus_filter_varslope_lowpass.h"
+#include "modules/dsp/filter/varslope_lowpass/modules_dsp_filter_varslope_lowpass.h"
 
 static jack_default_audio_sample_t ** outs ;
 static jack_default_audio_sample_t ** ins ;

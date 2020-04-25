@@ -18,7 +18,7 @@
  * Abstract:
  *      Function to initialize non-finite, NaN
  */
-#include "dsp_math_utils.h"
+#include "math_utils.h"
 #define NumBitsPerChar                 8U
 
 float rtInf;

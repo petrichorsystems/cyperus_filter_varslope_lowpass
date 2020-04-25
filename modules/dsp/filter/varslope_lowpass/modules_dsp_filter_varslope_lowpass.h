@@ -14,21 +14,16 @@
  * Validation result: Not run
  */
 
-#ifndef RTW_HEADER_cyperus_lowpass_module_h_
-#define RTW_HEADER_cyperus_lowpass_module_h_
+#ifndef modules_dsp_filter_varslope_lowpass_h_
+#define modules_dsp_filter_varslope_lowpass_h_
 
 #include <float.h>
 #include <math.h>
 #include <string.h>
 #include <stddef.h>
 
-#ifndef cyperus_lowpass_module_COMMON_INCLUDES_
-# define cyperus_lowpass_module_COMMON_INCLUDES_
-
-#endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
-
 /* Shared type includes */
-#include "dsp_math_utils.h"
+#include "../../math_utils.h"
 
 #define RT_PI 3.14159265358979323846
 

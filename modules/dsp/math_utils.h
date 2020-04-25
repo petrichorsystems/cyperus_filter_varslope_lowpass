@@ -16,8 +16,8 @@
  * Validation result: Not run
  */
 
-#ifndef dsp_math_utils_h_
-#define dsp_math_utils_h_
+#ifndef math_utils_h_
+#define math_utils_h_
 #include <stdint.h>
 #include <stddef.h>
 

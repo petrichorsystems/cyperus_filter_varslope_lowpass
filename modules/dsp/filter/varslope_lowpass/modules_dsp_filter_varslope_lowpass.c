@@ -16,8 +16,8 @@
 
 #include <math.h>
 
-#include "dsp_math_utils.h"
-#include "cyperus_filter_varslope_lowpass.h"
+#include "../../math_utils.h"
+#include "modules_dsp_filter_varslope_lowpass.h"
 
 
 typedef struct {
@@ -4040,8 +4040,7 @@ void cyperus_filter_varslope_lowpass_init(struct cyperus_parameters *filter, int
   rt_InitInfAndNaN(sizeof(float));
   for (i = 0; i < 8; i++) {
     filter->W0_FILT_STATES[i] = 0.0f;
-  }
-  
+  }  
   cyperus_lo_designVarSlopeFilter(filter->slope, filter->fc, filter->B, filter->A);  
 } /* cyperus_filter_varslope_lowpass_init */
 
