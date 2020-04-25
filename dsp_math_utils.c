@@ -39,11 +39,11 @@ float rtGetNaN(void)
   if (bitsPerReal == 32U) {
     nan = rtGetNaNF();
   } else {
-    uint16_T one = 1U;
+    uint16_t one = 1U;
     enum {
       LittleEndian,
       BigEndian
-    } machByteOrder = (*((uint8_T *) &one) == 1U) ? LittleEndian : BigEndian;
+    } machByteOrder = (*((uint8_t *) &one) == 1U) ? LittleEndian : BigEndian;
     switch (machByteOrder) {
      case LittleEndian:
       {
@@ -84,11 +84,11 @@ float rtGetNaNF(void)
 {
   IEEESingle nanF = { { 0 } };
 
-  uint16_T one = 1U;
+  uint16_t one = 1U;
   enum {
     LittleEndian,
     BigEndian
-  } machByteOrder = (*((uint8_T *) &one) == 1U) ? LittleEndian : BigEndian;
+  } machByteOrder = (*((uint8_t *) &one) == 1U) ? LittleEndian : BigEndian;
   switch (machByteOrder) {
    case LittleEndian:
     {
@@ -117,11 +117,11 @@ float rtGetInf(void)
   if (bitsPerReal == 32U) {
     inf = rtGetInfF();
   } else {
-    uint16_T one = 1U;
+    uint16_t one = 1U;
     enum {
       LittleEndian,
       BigEndian
-    } machByteOrder = (*((uint8_T *) &one) == 1U) ? LittleEndian : BigEndian;
+    } machByteOrder = (*((uint8_t *) &one) == 1U) ? LittleEndian : BigEndian;
     switch (machByteOrder) {
      case LittleEndian:
       {
@@ -176,11 +176,11 @@ float rtGetMinusInf(void)
   if (bitsPerReal == 32U) {
     minf = rtGetMinusInfF();
   } else {
-    uint16_T one = 1U;
+    uint16_t one = 1U;
     enum {
       LittleEndian,
       BigEndian
-    } machByteOrder = (*((uint8_T *) &one) == 1U) ? LittleEndian : BigEndian;
+    } machByteOrder = (*((uint8_t *) &one) == 1U) ? LittleEndian : BigEndian;
     switch (machByteOrder) {
      case LittleEndian:
       {
@@ -240,21 +240,21 @@ void rt_InitInfAndNaN(size_t realSize)
 }
 
 /* Test if value is infinite */
-boolean_T rtIsInf(float value)
+uint8_t rtIsInf(float value)
 {
-  return (boolean_T)((value==rtInf || value==rtMinusInf) ? 1U : 0U);
+  return (uint8_t)((value==rtInf || value==rtMinusInf) ? 1U : 0U);
 }
 
 /* Test if single-precision value is infinite */
-boolean_T rtIsInfF(float value)
+uint8_t rtIsInfF(float value)
 {
-  return (boolean_T)(((value)==rtInfF || (value)==rtMinusInfF) ? 1U : 0U);
+  return (uint8_t)(((value)==rtInfF || (value)==rtMinusInfF) ? 1U : 0U);
 }
 
 /* Test if value is not a number */
-boolean_T rtIsNaN(float value)
+uint8_t rtIsNaN(float value)
 {
-  boolean_T result = (boolean_T) 0;
+  uint8_t result = (uint8_t) 0;
   size_t bitsPerReal = sizeof(float) * (NumBitsPerChar);
   if (bitsPerReal == 32U) {
     result = rtIsNaNF((float)value);
@@ -265,7 +265,7 @@ boolean_T rtIsNaN(float value)
     } tmpVal;
 
     tmpVal.fltVal = value;
-    result = (boolean_T)((tmpVal.bitVal.words.wordH & 0x7FF00000) == 0x7FF00000 &&
+    result = (uint8_t)((tmpVal.bitVal.words.wordH & 0x7FF00000) == 0x7FF00000 &&
                          ( (tmpVal.bitVal.words.wordH & 0x000FFFFF) != 0 ||
                           (tmpVal.bitVal.words.wordL != 0) ));
   }
@@ -274,11 +274,11 @@ boolean_T rtIsNaN(float value)
 }
 
 /* Test if single-precision value is not a number */
-boolean_T rtIsNaNF(float value)
+uint8_t rtIsNaNF(float value)
 {
   IEEESingle tmp;
   tmp.wordL.wordLreal = value;
-  return (boolean_T)( (tmp.wordL.wordLuint & 0x7F800000) == 0x7F800000 &&
+  return (uint8_t)( (tmp.wordL.wordLuint & 0x7F800000) == 0x7F800000 &&
                      (tmp.wordL.wordLuint & 0x007FFFFF) != 0 );
 }
 

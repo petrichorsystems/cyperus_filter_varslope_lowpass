@@ -27,44 +27,44 @@ typedef struct {
 
 /* Forward declaration for local functions */
 static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
-  int32_T B_size[2], float A_data[], int32_T A_size[2]);
-static void cyperus_lowpass_module_all(const boolean_T x_data[], const int32_T
-  x_size[2], boolean_T y[2]);
-static boolean_T cyperus_lowpass_mo_anyNonFinite(const complex_float32_t x_data[], const
-  int32_T x_size[2]);
+  int32_t B_size[2], float A_data[], int32_t A_size[2]);
+static void cyperus_lowpass_module_all(const uint8_t x_data[], const int32_t
+  x_size[2], uint8_t y[2]);
+static uint8_t cyperus_lowpass_mo_anyNonFinite(const complex_float32_t x_data[], const
+  int32_t x_size[2]);
 static complex_float32_t cyperus_lowpass_module_sqrt(const complex_float32_t x);
 static void cyperus_lowpass_modul_xzlartg_c(const complex_float32_t f, const complex_float32_t g,
   float *cs, complex_float32_t *sn);
 static void cyperus_lowpass_module_xzlartg(const complex_float32_t f, const complex_float32_t g,
   float *cs, complex_float32_t *sn, complex_float32_t *r);
-static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], const int32_T
-  A_size[2], int32_T ilo, int32_T ihi, int32_T *info, complex_float32_t alpha1_data[],
-  int32_T *alpha1_size, complex_float32_t beta1_data[], int32_T *beta1_size);
-static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], const int32_T
-  A_size[2], int32_T *info, complex_float32_t alpha1_data[], int32_T *alpha1_size, complex_float32_t
-  beta1_data[], int32_T *beta1_size);
-static float cyperus_lowpass_module_xnrm2(int32_T n, const complex_float32_t x_data[],
-  int32_T ix0);
+static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], const int32_t
+  A_size[2], int32_t ilo, int32_t ihi, int32_t *info, complex_float32_t alpha1_data[],
+  int32_t *alpha1_size, complex_float32_t beta1_data[], int32_t *beta1_size);
+static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], const int32_t
+  A_size[2], int32_t *info, complex_float32_t alpha1_data[], int32_t *alpha1_size, complex_float32_t
+  beta1_data[], int32_t *beta1_size);
+static float cyperus_lowpass_module_xnrm2(int32_t n, const complex_float32_t x_data[],
+  int32_t ix0);
 static float cyperus_lowpass_module_xdlapy3(float x1, float x2, float x3);
 static complex_float32_t cyperus_lowpass_module_recip(const complex_float32_t y);
-static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], const int32_T
-  a_size[2], complex_float32_t b_a_data[], int32_T b_a_size[2]);
+static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], const int32_t
+  a_size[2], complex_float32_t b_a_data[], int32_t b_a_size[2]);
 static void cyperus_lowpass_module_xzlarfg(const complex_float32_t alpha1, const complex_float32_t x,
   complex_float32_t *b_alpha1, complex_float32_t *b_x, complex_float32_t *tau);
 static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], const
-  int32_T h_size[2], complex_float32_t b_h_data[], int32_T b_h_size[2], int32_T *info);
-static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const int32_T
-  A_size[2], complex_float32_t V_data[], int32_T *V_size);
+  int32_t h_size[2], complex_float32_t b_h_data[], int32_t b_h_size[2], int32_t *info);
+static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const int32_t
+  A_size[2], complex_float32_t V_data[], int32_t *V_size);
 static void cyperus_lowpass_module_roots_c(const float c[5], complex_float32_t r_data[],
-  int32_T *r_size);
-static boolean_T cyperus_lowpass_module_iseq(float x, float y);
-static boolean_T cyperus_lowpass_module_sortLE(const complex_float32_t v_data[], int32_T
-  idx1, int32_T idx2);
-static void cyperus_lowpass_module_sort_c(complex_float32_t x_data[], int32_T *x_size);
+  int32_t *r_size);
+static uint8_t cyperus_lowpass_module_iseq(float x, float y);
+static uint8_t cyperus_lowpass_module_sortLE(const complex_float32_t v_data[], int32_t
+  idx1, int32_t idx2);
+static void cyperus_lowpass_module_sort_c(complex_float32_t x_data[], int32_t *x_size);
 static void cyperus_lowpass_module_roots(const float c[3], complex_float32_t r_data[],
-  int32_T *r_size);
+  int32_t *r_size);
 static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
-  int32_T B_size[2], float A_data[], int32_T A_size[2]);
+  int32_t B_size[2], float A_data[], int32_t A_size[2]);
 static void cyperus_lo_designVarSlopeFilter(float Slope, float Fc, float B[12],
   float A[8]);
 
@@ -118,46 +118,46 @@ float rt_remd_snf(float u0, float u1)
 }
 
 static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
-  int32_T B_size[2], float A_data[], int32_T A_size[2])
+  int32_t B_size[2], float A_data[], int32_t A_size[2])
 {
   float r;
   float L;
   float WB;
-  int32_T offset;
+  int32_t offset;
   float Ba_data[15];
   float Aa_data[15];
-  uint32_T i_data[4];
+  uint32_t i_data[4];
   float si_data[4];
   float b_B_data[25];
   float b_A_data[25];
-  uint32_T y_data[4];
-  int32_T nx;
+  uint32_t y_data[4];
+  int32_t nx;
   float Bhat_data[15];
   float Ahat_data[15];
-  int32_T i1idx_data[5];
-  boolean_T x_data[5];
-  int32_T ii_data[5];
-  int32_T idx;
+  int32_t i1idx_data[5];
+  uint8_t x_data[5];
+  int32_t ii_data[5];
+  int32_t idx;
   float tmp_data[5];
-  int32_T Ba_size_idx_0;
-  int32_T Aa_size_idx_0;
-  int32_T y_size_idx_1;
+  int32_t Ba_size_idx_0;
+  int32_t Aa_size_idx_0;
+  int32_t y_size_idx_1;
   float r_tmp;
-  int32_T Bhat_data_tmp;
+  int32_t Bhat_data_tmp;
   float L_tmp;
-  boolean_T exitg1;
+  uint8_t exitg1;
   r = rt_remd_snf(N, 2.0);
   L = (N - r) / 2.0;
   WB = tan(3.1415926535897931 * BW / 2.0);
   offset = !(r == 0.0);
-  Ba_size_idx_0 = (int32_T)(L + (float)offset);
-  idx = (int32_T)(L + (float)offset) * 3 - 1;
+  Ba_size_idx_0 = (int32_t)(L + (float)offset);
+  idx = (int32_t)(L + (float)offset) * 3 - 1;
   if (0 <= idx) {
     memset(&Ba_data[0], 0, (idx + 1) * sizeof(float));
   }
 
-  Aa_size_idx_0 = (int32_T)(L + (float)offset);
-  idx = (int32_T)(L + (float)offset) * 3 - 1;
+  Aa_size_idx_0 = (int32_t)(L + (float)offset);
+  idx = (int32_t)(L + (float)offset) * 3 - 1;
   if (0 <= idx) {
     memset(&Aa_data[0], 0, (idx + 1) * sizeof(float));
   }
@@ -175,7 +175,7 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
     if (L < 1.0) {
       y_size_idx_1 = 0;
     } else {
-      idx = (int32_T)floor(L - 1.0);
+      idx = (int32_t)floor(L - 1.0);
       y_size_idx_1 = idx + 1;
       for (nx = 0; nx <= idx; nx++) {
         y_data[nx] = 1U + nx;
@@ -195,31 +195,31 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
 
     r_tmp = WB * WB;
     r = r_tmp * 0.0;
-    idx = (int32_T)L;
+    idx = (int32_t)L;
     for (nx = 0; nx < idx; nx++) {
-      Ba_data[(int32_T)(offset + i_data[nx]) - 1] = r;
+      Ba_data[(int32_t)(offset + i_data[nx]) - 1] = r;
     }
 
     for (nx = 0; nx < y_size_idx_1; nx++) {
-      Ba_data[((int32_T)(offset + i_data[nx]) + Ba_size_idx_0) - 1] = 0.0 *
+      Ba_data[((int32_t)(offset + i_data[nx]) + Ba_size_idx_0) - 1] = 0.0 *
         si_data[nx] * WB;
     }
 
     for (nx = 0; nx < idx; nx++) {
-      Ba_data[((int32_T)(offset + i_data[nx]) + (Ba_size_idx_0 << 1)) - 1] = 1.0;
+      Ba_data[((int32_t)(offset + i_data[nx]) + (Ba_size_idx_0 << 1)) - 1] = 1.0;
     }
 
     for (nx = 0; nx < idx; nx++) {
-      Aa_data[(int32_T)(offset + i_data[nx]) - 1] = r_tmp;
+      Aa_data[(int32_t)(offset + i_data[nx]) - 1] = r_tmp;
     }
 
     for (nx = 0; nx < y_size_idx_1; nx++) {
-      Aa_data[((int32_T)(offset + i_data[nx]) + Aa_size_idx_0) - 1] = 2.0 *
+      Aa_data[((int32_t)(offset + i_data[nx]) + Aa_size_idx_0) - 1] = 2.0 *
         si_data[nx] * WB;
     }
 
     for (nx = 0; nx < idx; nx++) {
-      Aa_data[((int32_T)(offset + i_data[nx]) + (Aa_size_idx_0 << 1)) - 1] = 1.0;
+      Aa_data[((int32_t)(offset + i_data[nx]) + (Aa_size_idx_0 << 1)) - 1] = 1.0;
     }
   }
 
@@ -244,13 +244,13 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
   idx = 0;
   y_size_idx_1 = Ba_size_idx_0;
   nx = 0;
-  exitg1 = false;
+  exitg1 = 0;
   while ((!exitg1) && (nx <= Ba_size_idx_0 - 1)) {
     if (x_data[nx]) {
       idx++;
       ii_data[idx - 1] = nx + 1;
       if (idx >= Ba_size_idx_0) {
-        exitg1 = true;
+        exitg1 = 1;
       } else {
         nx++;
       }
@@ -272,7 +272,7 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
   }
 
   if (0 <= y_size_idx_1 - 1) {
-    memcpy(&i1idx_data[0], &ii_data[0], y_size_idx_1 * sizeof(int32_T));
+    memcpy(&i1idx_data[0], &ii_data[0], y_size_idx_1 * sizeof(int32_t));
   }
 
   if (y_size_idx_1 != 0) {
@@ -295,13 +295,13 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
   idx = 0;
   y_size_idx_1 = Ba_size_idx_0;
   nx = 0;
-  exitg1 = false;
+  exitg1 = 0;
   while ((!exitg1) && (nx <= Ba_size_idx_0 - 1)) {
     if (x_data[nx]) {
       idx++;
       ii_data[idx - 1] = nx + 1;
       if (idx >= Ba_size_idx_0) {
-        exitg1 = true;
+        exitg1 = 1;
       } else {
         nx++;
       }
@@ -323,7 +323,7 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
   }
 
   if (0 <= y_size_idx_1 - 1) {
-    memcpy(&i1idx_data[0], &ii_data[0], y_size_idx_1 * sizeof(int32_T));
+    memcpy(&i1idx_data[0], &ii_data[0], y_size_idx_1 * sizeof(int32_t));
   }
 
   nx = y_size_idx_1 - 1;
@@ -384,21 +384,21 @@ static void cyperus_lowpass_module_hpeq(float N, float BW, float B_data[],
   A_size[1] = 5;
 }
 
-static void cyperus_lowpass_module_all(const boolean_T x_data[], const int32_T
-  x_size[2], boolean_T y[2])
+static void cyperus_lowpass_module_all(const uint8_t x_data[], const int32_t
+  x_size[2], uint8_t y[2])
 {
-  int32_T i2;
-  int32_T i1;
-  boolean_T exitg1;
-  y[0] = true;
-  y[1] = true;
+  int32_t i2;
+  int32_t i1;
+  uint8_t exitg1;
+  y[0] = 1;
+  y[1] = 1;
   i1 = 1;
   i2 = -1 + x_size[0];
-  exitg1 = false;
+  exitg1 = 0;
   while ((!exitg1) && (i1 <= i2 + 1)) {
     if (!x_data[i1 - 1]) {
-      y[0] = false;
-      exitg1 = true;
+      y[0] = 0;
+      exitg1 = 1;
     } else {
       i1++;
     }
@@ -406,30 +406,30 @@ static void cyperus_lowpass_module_all(const boolean_T x_data[], const int32_T
 
   i1 = i2 + 2;
   i2 += x_size[0];
-  exitg1 = false;
+  exitg1 = 0;
   while ((!exitg1) && (i1 <= i2 + 1)) {
     if (!x_data[i1 - 1]) {
-      y[1] = false;
-      exitg1 = true;
+      y[1] = 0;
+      exitg1 = 1;
     } else {
       i1++;
     }
   }
 }
 
-static boolean_T cyperus_lowpass_mo_anyNonFinite(const complex_float32_t x_data[], const
-  int32_T x_size[2])
+static uint8_t cyperus_lowpass_mo_anyNonFinite(const complex_float32_t x_data[], const
+  int32_t x_size[2])
 {
-  int32_T nx;
-  boolean_T b_p;
-  int32_T b_k;
+  int32_t nx;
+  uint8_t b_p;
+  int32_t b_k;
   nx = x_size[0] * x_size[1] - 1;
-  b_p = true;
+  b_p = 1;
   for (b_k = 0; b_k <= nx; b_k++) {
     if (b_p && ((!rtIsInf(x_data[b_k].re)) && (!rtIsInf(x_data[b_k].im)) &&
                 ((!rtIsNaN(x_data[b_k].re)) && (!rtIsNaN(x_data[b_k].im))))) {
     } else {
-      b_p = false;
+      b_p = 0;
     }
   }
 
@@ -540,7 +540,7 @@ static void cyperus_lowpass_modul_xzlartg_c(const complex_float32_t f, const com
   float gs_re;
   float gs_im;
   float g2_tmp;
-  boolean_T guard1 = false;
+  uint8_t guard1 = 0;
   di = fabs(f.re);
   scale = di;
   g2_tmp = fabs(f.im);
@@ -562,7 +562,7 @@ static void cyperus_lowpass_modul_xzlartg_c(const complex_float32_t f, const com
   fs_im = f.im;
   gs_re = g.re;
   gs_im = g.im;
-  guard1 = false;
+  guard1 = 0;
   if (scale >= 7.4428285367870146E+137) {
     do {
       fs_re *= 1.3435752215134178E-138;
@@ -572,7 +572,7 @@ static void cyperus_lowpass_modul_xzlartg_c(const complex_float32_t f, const com
       scale *= 1.3435752215134178E-138;
     } while (!(scale < 7.4428285367870146E+137));
 
-    guard1 = true;
+    guard1 = 1;
   } else if (scale <= 1.3435752215134178E-138) {
     if ((g.re == 0.0) && (g.im == 0.0)) {
       *cs = 1.0;
@@ -587,10 +587,10 @@ static void cyperus_lowpass_modul_xzlartg_c(const complex_float32_t f, const com
         scale *= 7.4428285367870146E+137;
       } while (!(scale > 1.3435752215134178E-138));
 
-      guard1 = true;
+      guard1 = 1;
     }
   } else {
-    guard1 = true;
+    guard1 = 1;
   }
 
   if (guard1) {
@@ -650,18 +650,18 @@ static void cyperus_lowpass_module_xzlartg(const complex_float32_t f, const comp
   float *cs, complex_float32_t *sn, complex_float32_t *r)
 {
   float scale;
-  int32_T count;
+  int32_t count;
   float rescaledir;
   float f2;
   float g2;
-  int32_T b_i;
+  int32_t b_i;
   float fs_re;
   float fs_im;
   float gs_re;
   float gs_im;
   float scale_tmp;
   float f2_tmp;
-  boolean_T guard1 = false;
+  uint8_t guard1 = 0;
   scale_tmp = fabs(f.re);
   scale = scale_tmp;
   f2_tmp = fabs(f.im);
@@ -685,7 +685,7 @@ static void cyperus_lowpass_module_xzlartg(const complex_float32_t f, const comp
   gs_im = g.im;
   count = -1;
   rescaledir = 0.0;
-  guard1 = false;
+  guard1 = 0;
   if (scale >= 7.4428285367870146E+137) {
     do {
       count++;
@@ -697,7 +697,7 @@ static void cyperus_lowpass_module_xzlartg(const complex_float32_t f, const comp
     } while (!(scale < 7.4428285367870146E+137));
 
     rescaledir = 1.0;
-    guard1 = true;
+    guard1 = 1;
   } else if (scale <= 1.3435752215134178E-138) {
     if ((g.re == 0.0) && (g.im == 0.0)) {
       *cs = 1.0;
@@ -715,10 +715,10 @@ static void cyperus_lowpass_module_xzlartg(const complex_float32_t f, const comp
       } while (!(scale > 1.3435752215134178E-138));
 
       rescaledir = -1.0;
-      guard1 = true;
+      guard1 = 1;
     }
   } else {
-    guard1 = true;
+    guard1 = 1;
   }
 
   if (guard1) {
@@ -791,34 +791,34 @@ static void cyperus_lowpass_module_xzlartg(const complex_float32_t f, const comp
   }
 }
 
-static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], const int32_T
-  A_size[2], int32_T ilo, int32_T ihi, int32_T *info, complex_float32_t alpha1_data[],
-  int32_T *alpha1_size, complex_float32_t beta1_data[], int32_T *beta1_size)
+static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], const int32_t
+  A_size[2], int32_t ilo, int32_t ihi, int32_t *info, complex_float32_t alpha1_data[],
+  int32_t *alpha1_size, complex_float32_t beta1_data[], int32_t *beta1_size)
 {
-  int32_T n;
+  int32_t n;
   complex_float32_t ctemp;
   float anorm;
-  int32_T ifirst;
-  int32_T istart;
-  int32_T ilastm1;
-  int32_T ifrstm;
-  int32_T iiter;
-  boolean_T goto60;
-  boolean_T goto70;
-  boolean_T goto90;
-  int32_T jp1;
+  int32_t ifirst;
+  int32_t istart;
+  int32_t ilastm1;
+  int32_t ifrstm;
+  int32_t iiter;
+  uint8_t goto60;
+  uint8_t goto70;
+  uint8_t goto90;
+  int32_t jp1;
   complex_float32_t ad11;
   complex_float32_t shift;
   complex_float32_t b_A_data[16];
-  int32_T jiter;
+  int32_t jiter;
   float scale;
   float sumsq;
-  boolean_T firstNonZero;
+  uint8_t firstNonZero;
   float imAij;
   float temp1;
-  int32_T j;
-  int32_T b_x;
-  int32_T b_A_size_idx_0;
+  int32_t j;
+  int32_t b_x;
+  int32_t b_A_size_idx_0;
   complex_float32_t sumsq_0;
   complex_float32_t t1;
   float ar;
@@ -827,15 +827,15 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
   float sumsq_im;
   float eshift_re;
   float eshift_im;
-  int32_T ctemp_tmp;
-  int32_T t1_re_tmp;
+  int32_t ctemp_tmp;
+  int32_t t1_re_tmp;
   float t1_tmp;
-  boolean_T guard1 = false;
-  boolean_T guard2 = false;
-  boolean_T guard3 = false;
-  int32_T exitg1;
-  boolean_T exitg2;
-  boolean_T guard11 = false;
+  uint8_t guard1 = 0;
+  uint8_t guard2 = 0;
+  uint8_t guard3 = 0;
+  int32_t exitg1;
+  uint8_t exitg2;
+  uint8_t guard11 = 0;
   b_A_size_idx_0 = A_size[0];
   ifirst = A_size[0] * A_size[1] - 1;
   if (0 <= ifirst) {
@@ -869,7 +869,7 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
   if (ilo <= ihi) {
     scale = 0.0;
     sumsq = 0.0;
-    firstNonZero = true;
+    firstNonZero = 1;
     for (j = ilo; j <= ihi; j++) {
       ifirst = j + 1;
       if (ihi < j + 1) {
@@ -885,7 +885,7 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
           if (firstNonZero) {
             sumsq = 1.0;
             scale = temp1;
-            firstNonZero = false;
+            firstNonZero = 0;
           } else if (scale < temp1) {
             t1_im = scale / temp1;
             sumsq = sumsq * t1_im * t1_im + 1.0;
@@ -901,7 +901,7 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
           if (firstNonZero) {
             sumsq = 1.0;
             scale = temp1;
-            firstNonZero = false;
+            firstNonZero = 0;
           } else if (scale < temp1) {
             imAij = scale / temp1;
             sumsq = sumsq * imAij * imAij + 1.0;
@@ -930,13 +930,13 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
 
   sumsq = 1.0 / sumsq;
   imAij = 1.0 / sqrt(A_size[0]);
-  firstNonZero = true;
+  firstNonZero = 1;
   for (ifirst = ihi + 1; ifirst <= n; ifirst++) {
     alpha1_data[ifirst - 1] = A_data[((ifirst - 1) * A_size[0] + ifirst) - 1];
   }
 
-  guard1 = false;
-  guard2 = false;
+  guard1 = 0;
+  guard2 = 0;
   if (ihi >= ilo) {
     ifirst = ilo;
     istart = ilo;
@@ -944,55 +944,55 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
     ilastm1 = ihi - 2;
     ifrstm = ilo;
     iiter = 0;
-    goto60 = false;
-    goto70 = false;
-    goto90 = false;
+    goto60 = 0;
+    goto70 = 0;
+    goto90 = 0;
     jiter = 0;
     do {
       exitg1 = 0;
       if (jiter <= ((ihi - ilo) + 1) * 30 - 1) {
-        guard11 = false;
+        guard11 = 0;
         if (n + 1 == ilo) {
-          goto60 = true;
-          guard11 = true;
+          goto60 = 1;
+          guard11 = 1;
         } else {
           ctemp_tmp = b_A_size_idx_0 * ilastm1 + n;
           if (fabs(b_A_data[ctemp_tmp].re) + fabs(b_A_data[b_A_size_idx_0 *
                ilastm1 + n].im) <= scale) {
             b_A_data[ctemp_tmp].re = 0.0;
             b_A_data[ctemp_tmp].im = 0.0;
-            goto60 = true;
-            guard11 = true;
+            goto60 = 1;
+            guard11 = 1;
           } else {
             j = ilastm1 + 1;
-            guard3 = false;
-            exitg2 = false;
+            guard3 = 0;
+            exitg2 = 0;
             while ((!exitg2) && (j >= ilo)) {
               if (j == ilo) {
-                guard3 = true;
-                exitg2 = true;
+                guard3 = 1;
+                exitg2 = 1;
               } else {
                 ctemp_tmp = ((j - 2) * b_A_size_idx_0 + j) - 1;
                 if (fabs(b_A_data[ctemp_tmp].re) + fabs(b_A_data[((j - 2) *
                       b_A_size_idx_0 + j) - 1].im) <= scale) {
                   b_A_data[ctemp_tmp].re = 0.0;
                   b_A_data[ctemp_tmp].im = 0.0;
-                  guard3 = true;
-                  exitg2 = true;
+                  guard3 = 1;
+                  exitg2 = 1;
                 } else {
                   j--;
-                  guard3 = false;
+                  guard3 = 0;
                 }
               }
             }
 
             if (guard3) {
               ifirst = j;
-              goto70 = true;
+              goto70 = 1;
             }
 
             if (goto70) {
-              guard11 = true;
+              guard11 = 1;
             } else {
               j = *alpha1_size;
               for (ctemp_tmp = 0; ctemp_tmp < j; ctemp_tmp++) {
@@ -1014,13 +1014,13 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
 
         if (guard11) {
           if (goto60) {
-            goto60 = false;
+            goto60 = 0;
             alpha1_data[n] = b_A_data[b_A_size_idx_0 * n + n];
             n = ilastm1;
             ilastm1--;
             if (n + 1 < ilo) {
-              firstNonZero = false;
-              guard2 = true;
+              firstNonZero = 0;
+              guard2 = 1;
               exitg1 = 1;
             } else {
               iiter = 0;
@@ -1034,7 +1034,7 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
             }
           } else {
             if (goto70) {
-              goto70 = false;
+              goto70 = 0;
               iiter++;
               ifrstm = ifirst;
               if (iiter - iiter / 10 * 10 != 0) {
@@ -1130,7 +1130,7 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
 
               j = ilastm1;
               jp1 = ilastm1 + 1;
-              exitg2 = false;
+              exitg2 = 0;
               while ((!exitg2) && (j + 1 > ifirst)) {
                 istart = j + 1;
                 ctemp_tmp = b_A_size_idx_0 * j;
@@ -1153,8 +1153,8 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
                 if ((fabs(b_A_data[(j - 1) * b_A_size_idx_0 + j].re) + fabs
                      (b_A_data[(j - 1) * b_A_size_idx_0 + j].im)) * anorm <=
                     temp1 * scale) {
-                  goto90 = true;
-                  exitg2 = true;
+                  goto90 = 1;
+                  exitg2 = 1;
                 } else {
                   jp1 = j;
                   j--;
@@ -1167,12 +1167,12 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
                   .re * sumsq - shift.re * imAij;
                 ctemp.im = b_A_data[((ifirst - 1) * b_A_size_idx_0 + ifirst) - 1]
                   .im * sumsq - shift.im * imAij;
-                goto90 = true;
+                goto90 = 1;
               }
             }
 
             if (goto90) {
-              goto90 = false;
+              goto90 = 0;
               sumsq_0.re = b_A_data[(istart - 1) * b_A_size_idx_0 + istart].re *
                 sumsq;
               sumsq_0.im = b_A_data[(istart - 1) * b_A_size_idx_0 + istart].im *
@@ -1250,12 +1250,12 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
           }
         }
       } else {
-        guard2 = true;
+        guard2 = 1;
         exitg1 = 1;
       }
     } while (exitg1 == 0);
   } else {
-    guard1 = true;
+    guard1 = 1;
   }
 
   if (guard2) {
@@ -1268,7 +1268,7 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
         beta1_data[j].im = 0.0;
       }
     } else {
-      guard1 = true;
+      guard1 = 1;
     }
   }
 
@@ -1280,41 +1280,41 @@ static void cyperus_lowpass_module_xzhgeqz(const complex_float32_t A_data[], con
   }
 }
 
-static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], const int32_T
-  A_size[2], int32_T *info, complex_float32_t alpha1_data[], int32_T *alpha1_size, complex_float32_t
-  beta1_data[], int32_T *beta1_size)
+static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], const int32_t
+  A_size[2], int32_t *info, complex_float32_t alpha1_data[], int32_t *alpha1_size, complex_float32_t
+  beta1_data[], int32_t *beta1_size)
 {
   complex_float32_t At_data[16];
   float anrm;
-  boolean_T ilascl;
+  uint8_t ilascl;
   float anrmto;
   complex_float32_t c_A_data[16];
   complex_float32_t d_A_data[16];
   float absxk;
   float ctoc;
-  boolean_T notdone;
-  int32_T i;
-  int32_T j;
+  uint8_t notdone;
+  int32_t i;
+  int32_t j;
   complex_float32_t c_A_data_0[16];
   complex_float32_t d_A_data_0[16];
-  int32_T ii;
-  int32_T jrow;
+  int32_t ii;
+  int32_t jrow;
   complex_float32_t s;
-  int32_T jcol;
+  int32_t jcol;
   float cto1;
   float mul;
-  int32_T d_A_size[2];
-  int32_T At_size_idx_0;
+  int32_t d_A_size[2];
+  int32_t At_size_idx_0;
   float atmp_im;
   complex_float32_t alpha1_data_0;
-  int32_T loop_ub_tmp;
-  int32_T loop_ub_tmp_0;
-  int32_T c_A_data_tmp;
-  int32_T d_A_data_tmp;
-  boolean_T exitg1;
-  int32_T exitg2;
-  int32_T exitg3;
-  boolean_T exitg4;
+  int32_t loop_ub_tmp;
+  int32_t loop_ub_tmp_0;
+  int32_t c_A_data_tmp;
+  int32_t d_A_data_tmp;
+  uint8_t exitg1;
+  int32_t exitg2;
+  int32_t exitg3;
+  uint8_t exitg4;
   At_size_idx_0 = A_size[0];
   jrow = A_size[1];
   loop_ub_tmp = A_size[0] * A_size[1];
@@ -1326,12 +1326,12 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
   *info = 0;
   anrm = 0.0;
   jcol = 0;
-  exitg1 = false;
+  exitg1 = 0;
   while ((!exitg1) && (jcol <= loop_ub_tmp - 1)) {
     absxk = rt_hypotd_snf(A_data[jcol].re, A_data[jcol].im);
     if (rtIsNaN(absxk)) {
       anrm = (rtNaN);
-      exitg1 = true;
+      exitg1 = 1;
     } else {
       if (absxk > anrm) {
         anrm = absxk;
@@ -1356,15 +1356,15 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
       beta1_data[i].im = 0.0;
     }
   } else {
-    ilascl = false;
+    ilascl = 0;
     anrmto = anrm;
     if ((anrm > 0.0) && (anrm < 6.7178761075670888E-139)) {
       anrmto = 6.7178761075670888E-139;
-      ilascl = true;
+      ilascl = 1;
     } else {
       if (anrm > 1.4885657073574029E+138) {
         anrmto = 1.4885657073574029E+138;
-        ilascl = true;
+        ilascl = 1;
       }
     }
 
@@ -1377,7 +1377,7 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
 
       absxk = anrm;
       ctoc = anrmto;
-      notdone = true;
+      notdone = 1;
       while (notdone) {
         atmp_im = absxk * 2.0041683600089728E-292;
         cto1 = ctoc / 4.9896007738368E+291;
@@ -1389,7 +1389,7 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
           ctoc = cto1;
         } else {
           mul = ctoc / absxk;
-          notdone = false;
+          notdone = 0;
         }
 
         jcol = At_size_idx_0 * jrow - 1;
@@ -1415,15 +1415,15 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
         exitg3 = 0;
         i = -1;
         j = 0;
-        notdone = false;
+        notdone = 0;
         ii = loop_ub_tmp_0;
-        exitg1 = false;
+        exitg1 = 0;
         while ((!exitg1) && (ii > 0)) {
           absxk = 0.0;
           i = ii - 1;
           j = loop_ub_tmp_0;
           jcol = 0;
-          exitg4 = false;
+          exitg4 = 0;
           while ((!exitg4) && (jcol <= loop_ub_tmp_0 - 1)) {
             if ((c_A_data[(At_size_idx_0 * jcol + ii) - 1].re != 0.0) ||
                 (c_A_data[(At_size_idx_0 * jcol + ii) - 1].im != 0.0) || (jcol +
@@ -1434,7 +1434,7 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
                 jcol++;
               } else {
                 absxk = 2.0;
-                exitg4 = true;
+                exitg4 = 1;
               }
             } else {
               jcol++;
@@ -1442,8 +1442,8 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
           }
 
           if (absxk < 2.0) {
-            notdone = true;
-            exitg1 = true;
+            notdone = 1;
+            exitg1 = 1;
           } else {
             ii--;
           }
@@ -1499,15 +1499,15 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
           exitg2 = 0;
           i = 0;
           j = -1;
-          notdone = false;
+          notdone = 0;
           jcol = loop_ub_tmp;
-          exitg1 = false;
+          exitg1 = 0;
           while ((!exitg1) && (jcol <= loop_ub_tmp_0)) {
             absxk = 0.0;
             i = loop_ub_tmp_0;
             j = jcol - 1;
             ii = loop_ub_tmp;
-            exitg4 = false;
+            exitg4 = 0;
             while ((!exitg4) && (ii <= loop_ub_tmp_0)) {
               if ((c_A_data[((jcol - 1) * At_size_idx_0 + ii) - 1].re != 0.0) ||
                   (c_A_data[((jcol - 1) * At_size_idx_0 + ii) - 1].im != 0.0) ||
@@ -1518,7 +1518,7 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
                   ii++;
                 } else {
                   absxk = 2.0;
-                  exitg4 = true;
+                  exitg4 = 1;
                 }
               } else {
                 ii++;
@@ -1526,8 +1526,8 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
             }
 
             if (absxk < 2.0) {
-              notdone = true;
-              exitg1 = true;
+              notdone = 1;
+              exitg1 = 1;
             } else {
               jcol++;
             }
@@ -1646,7 +1646,7 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
     cyperus_lowpass_module_xzhgeqz(d_A_data, d_A_size, loop_ub_tmp,
       loop_ub_tmp_0, info, alpha1_data, alpha1_size, beta1_data, beta1_size);
     if ((*info == 0) && ilascl) {
-      notdone = true;
+      notdone = 1;
       while (notdone) {
         atmp_im = anrmto * 2.0041683600089728E-292;
         cto1 = anrm / 4.9896007738368E+291;
@@ -1658,7 +1658,7 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
           anrm = cto1;
         } else {
           mul = anrm / anrmto;
-          notdone = false;
+          notdone = 0;
         }
 
         jcol = *alpha1_size;
@@ -1672,14 +1672,14 @@ static void cyperus_lowpass_module_xzgeev(const complex_float32_t A_data[], cons
   }
 }
 
-static float cyperus_lowpass_module_xnrm2(int32_T n, const complex_float32_t x_data[],
-  int32_T ix0)
+static float cyperus_lowpass_module_xnrm2(int32_t n, const complex_float32_t x_data[],
+  int32_t ix0)
 {
   float y;
   float scale;
   float absxk;
   float t;
-  int32_T k;
+  int32_t k;
   y = 0.0;
   if (n >= 1) {
     if (n == 1) {
@@ -1788,45 +1788,45 @@ static complex_float32_t cyperus_lowpass_module_recip(const complex_float32_t y)
   return z;
 }
 
-static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], const int32_T
-  a_size[2], complex_float32_t b_a_data[], int32_T b_a_size[2])
+static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], const int32_t
+  a_size[2], complex_float32_t b_a_data[], int32_t b_a_size[2])
 {
   complex_float32_t c_a_data[16];
   complex_float32_t tau_data[3];
-  int32_T n;
+  int32_t n;
   complex_float32_t work_data[4];
-  int32_T in;
-  int32_T ia0;
+  int32_t in;
+  int32_t ia0;
   complex_float32_t b_alpha1;
   complex_float32_t c_a_data_0[16];
   complex_float32_t d_a_data[16];
   complex_float32_t e_a_data[16];
-  int32_T b_i;
-  int32_T c;
+  int32_t b_i;
+  int32_t c;
   float xnorm;
-  int32_T knt;
-  int32_T lastc;
-  int32_T rowleft;
-  int32_T rowright;
-  int32_T iy;
-  int32_T iac;
-  int32_T jA;
-  int32_T jy;
-  int32_T c_a_size[2];
-  int32_T c_a_size_0[2];
-  int32_T d_a_size_idx_1;
-  int32_T d_idx_0;
+  int32_t knt;
+  int32_t lastc;
+  int32_t rowleft;
+  int32_t rowright;
+  int32_t iy;
+  int32_t iac;
+  int32_t jA;
+  int32_t jy;
+  int32_t c_a_size[2];
+  int32_t c_a_size_0[2];
+  int32_t d_a_size_idx_1;
+  int32_t d_idx_0;
   complex_float32_t b_alpha1_0;
   complex_float32_t c_a_data_1;
   float alpha1_re;
   float alpha1_im;
   float c_im;
   float c_a_data_im;
-  int32_T im1n_tmp;
-  int32_T c_tmp;
-  int32_T ia0_tmp;
-  int32_T exitg1;
-  boolean_T exitg2;
+  int32_t im1n_tmp;
+  int32_t c_tmp;
+  int32_t ia0_tmp;
+  int32_t exitg1;
+  uint8_t exitg2;
   c_a_size[0] = a_size[0];
   c_a_size[1] = a_size[1];
   rowleft = a_size[0] * a_size[1] - 1;
@@ -1993,7 +1993,7 @@ static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], cons
       }
 
       lastc = n;
-      exitg2 = false;
+      exitg2 = 0;
       while ((!exitg2) && (lastc > 0)) {
         rowleft = in + lastc;
         rowright = ia0 * n + rowleft;
@@ -2014,7 +2014,7 @@ static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], cons
         } while (exitg1 == 0);
 
         if (exitg1 == 1) {
-          exitg2 = true;
+          exitg2 = 1;
         }
       }
 
@@ -2098,7 +2098,7 @@ static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], cons
       }
 
       lastc = ia0_tmp;
-      exitg2 = false;
+      exitg2 = 0;
       while ((!exitg2) && (lastc + 1 > 0)) {
         rowleft = lastc * n + in;
         jA = rowleft;
@@ -2117,7 +2117,7 @@ static void cyperus_lowpass_module_xgehrd(const complex_float32_t a_data[], cons
         } while (exitg1 == 0);
 
         if (exitg1 == 1) {
-          exitg2 = true;
+          exitg2 = 1;
         }
       }
 
@@ -2203,8 +2203,8 @@ static void cyperus_lowpass_module_xzlarfg(const complex_float32_t alpha1, const
   complex_float32_t *b_alpha1, complex_float32_t *b_x, complex_float32_t *tau)
 {
   float xnorm;
-  int32_T knt;
-  int32_T k;
+  int32_t knt;
+  int32_t k;
   complex_float32_t alpha1_0;
   float ar;
   *b_x = x;
@@ -2284,15 +2284,15 @@ static void cyperus_lowpass_module_xzlarfg(const complex_float32_t alpha1, const
 }
 
 static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], const
-  int32_T h_size[2], complex_float32_t b_h_data[], int32_T b_h_size[2], int32_T *info)
+  int32_t h_size[2], complex_float32_t b_h_data[], int32_t b_h_size[2], int32_t *info)
 {
-  int32_T n;
-  int32_T ldh;
-  int32_T i;
+  int32_t n;
+  int32_t ldh;
+  int32_t i;
   complex_float32_t sc;
   float SMLNUM;
-  int32_T L;
-  boolean_T goto140;
+  int32_t L;
+  uint8_t goto140;
   float tst;
   float htmp1;
   float ab;
@@ -2300,26 +2300,26 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
   float aa;
   complex_float32_t t;
   complex_float32_t x2;
-  boolean_T goto70;
-  int32_T m;
-  int32_T its;
-  int32_T b_k;
-  int32_T c;
-  int32_T b;
-  int32_T k;
+  uint8_t goto70;
+  int32_t m;
+  int32_t its;
+  int32_t b_k;
+  int32_t c;
+  int32_t b;
+  int32_t k;
   complex_float32_t v_idx_1;
   complex_float32_t v_idx_0;
   complex_float32_t tmp;
   complex_float32_t tmp_0;
   complex_float32_t x2_0;
-  int32_T b_h_size_0;
-  int32_T br_tmp;
-  int32_T c_tmp;
-  int32_T sc_tmp;
-  int32_T x2_tmp;
-  boolean_T exitg1;
-  boolean_T exitg2;
-  boolean_T exitg3;
+  int32_t b_h_size_0;
+  int32_t br_tmp;
+  int32_t c_tmp;
+  int32_t sc_tmp;
+  int32_t x2_tmp;
+  uint8_t exitg1;
+  uint8_t exitg2;
+  uint8_t exitg3;
   b_h_size[0] = h_size[0];
   b_h_size[1] = h_size[1];
   n = h_size[0] * h_size[1] - 1;
@@ -2407,20 +2407,20 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
     SMLNUM = (float)h_size[0] / 2.2204460492503131E-16 *
       2.2250738585072014E-308;
     i = h_size[0] - 1;
-    exitg1 = false;
+    exitg1 = 0;
     while ((!exitg1) && (i + 1 >= 1)) {
       L = 1;
-      goto140 = false;
+      goto140 = 0;
       its = 0;
-      exitg2 = false;
+      exitg2 = 0;
       while ((!exitg2) && (its < 301)) {
         br_tmp = i;
-        exitg3 = false;
+        exitg3 = 0;
         while ((!exitg3) && (br_tmp + 1 > L)) {
           b = (br_tmp - 1) * b_h_size[0] + br_tmp;
           if (fabs(b_h_data[b].re) + fabs(b_h_data[(br_tmp - 1) * b_h_size[0] +
                br_tmp].im) <= SMLNUM) {
-            exitg3 = true;
+            exitg3 = 1;
           } else {
             m = b_h_size[0] * br_tmp + br_tmp;
             b_h_size_0 = b - 1;
@@ -2471,7 +2471,7 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
               }
 
               if (ab / tst * ba <= htmp1) {
-                exitg3 = true;
+                exitg3 = 1;
               } else {
                 br_tmp--;
               }
@@ -2488,8 +2488,8 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
         }
 
         if (br_tmp + 1 >= i + 1) {
-          goto140 = true;
-          exitg2 = true;
+          goto140 = 1;
+          exitg2 = 1;
         } else {
           if (its == 10) {
             t.re = fabs(b_h_data[(b_h_size[0] * br_tmp + br_tmp) + 1].re) * 0.75
@@ -2618,9 +2618,9 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
             }
           }
 
-          goto70 = false;
+          goto70 = 0;
           m = i;
-          exitg3 = false;
+          exitg3 = 0;
           while ((!exitg3) && (m > br_tmp + 1)) {
             b_h_size_0 = (m - 1) * b_h_size[0] + m;
             sc_tmp = b_h_size_0 - 1;
@@ -2647,8 +2647,8 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
                     b_h_size[0] + m) - 1].im)) + (fabs(b_h_data[b_h_size[0] * m
                    + m].re) + fabs(b_h_data[b_h_size[0] * m + m].im))) * (fabs
                  (sc.re) + fabs(sc.im)) * 2.2204460492503131E-16) {
-              goto70 = true;
-              exitg3 = true;
+              goto70 = 1;
+              exitg3 = 1;
             } else {
               m--;
             }
@@ -2835,7 +2835,7 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
 
       if (!goto140) {
         *info = i + 1;
-        exitg1 = true;
+        exitg1 = 1;
       } else {
         i = L - 2;
       }
@@ -2843,30 +2843,30 @@ static void cyperus_lowpass_modu_eml_zlahqr(const complex_float32_t h_data[], co
   }
 }
 
-static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const int32_T
-  A_size[2], complex_float32_t V_data[], int32_T *V_size)
+static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const int32_t
+  A_size[2], complex_float32_t V_data[], int32_t *V_size)
 {
   complex_float32_t beta1_data[4];
   complex_float32_t T_data[16];
-  boolean_T b_p;
+  uint8_t b_p;
   complex_float32_t c_h_data[16];
-  int32_T istart;
-  int32_T i;
-  int32_T jend;
-  int32_T n;
+  int32_t istart;
+  int32_t i;
+  int32_t jend;
+  int32_t n;
   complex_float32_t tmp_data[16];
-  int32_T c_h_size[2];
-  int32_T tmp_size[2];
-  int32_T T_size_idx_0;
-  int32_T b_idx_0;
+  int32_t c_h_size[2];
+  int32_t tmp_size[2];
+  int32_t T_size_idx_0;
+  int32_t b_idx_0;
   float brm;
   float bim;
   float sgnbi;
   float d;
-  int32_T A_size_0;
+  int32_t A_size_0;
   complex_float32_t V_data_0;
-  int32_T exitg1;
-  boolean_T exitg2;
+  int32_t exitg1;
+  uint8_t exitg2;
   if (cyperus_lowpass_mo_anyNonFinite(A_data, A_size)) {
     if ((A_size[0] == 1) && (A_size[1] == 1)) {
       *V_size = 1;
@@ -2887,7 +2887,7 @@ static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const i
     b_p = (A_size[0] == A_size[1]);
     if (b_p) {
       n = 0;
-      exitg2 = false;
+      exitg2 = 0;
       while ((!exitg2) && (n <= A_size[1] - 1)) {
         istart = 0;
         do {
@@ -2896,7 +2896,7 @@ static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const i
             if ((!(A_data[A_size[0] * n + istart].re == A_data[A_size[0] *
                    istart + n].re)) || (!(A_data[A_size[0] * n + istart].im ==
                   -A_data[A_size[0] * istart + n].im))) {
-              b_p = false;
+              b_p = 0;
               exitg1 = 1;
             } else {
               istart++;
@@ -2908,7 +2908,7 @@ static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const i
         } while (exitg1 == 0);
 
         if (exitg1 == 1) {
-          exitg2 = true;
+          exitg2 = 1;
         }
       }
     }
@@ -3020,20 +3020,20 @@ static void cyperus_lowpass_module_eig(const complex_float32_t A_data[], const i
 }
 
 static void cyperus_lowpass_module_roots_c(const float c[5], complex_float32_t r_data[],
-  int32_T *r_size)
+  int32_t *r_size)
 {
-  int32_T k1;
-  int32_T k2;
-  int32_T nTrailingZeros;
-  int32_T companDim;
+  int32_t k1;
+  int32_t k2;
+  int32_t nTrailingZeros;
+  int32_t companDim;
   float ctmp[5];
-  int32_T j;
+  int32_t j;
   complex_float32_t a_data[16];
   complex_float32_t eiga_data[4];
-  int32_T b_k;
-  int32_T a_size[2];
-  boolean_T exitg1;
-  boolean_T exitg2;
+  int32_t b_k;
+  int32_t a_size[2];
+  uint8_t exitg1;
+  uint8_t exitg2;
   memset(&r_data[0], 0, sizeof(float) << 2U);
   k1 = 1;
   while ((k1 <= 5) && (!(c[k1 - 1] != 0.0))) {
@@ -3048,21 +3048,21 @@ static void cyperus_lowpass_module_roots_c(const float c[5], complex_float32_t r
   nTrailingZeros = 4 - k2;
   if (k1 < k2) {
     companDim = k2 - k1;
-    exitg1 = false;
+    exitg1 = 0;
     while ((!exitg1) && (companDim > 0)) {
       j = 0;
-      exitg2 = false;
+      exitg2 = 0;
       while ((!exitg2) && (j + 1 <= companDim)) {
         ctmp[j] = c[k1 + j] / c[k1 - 1];
         if (rtIsInf(fabs(ctmp[j]))) {
-          exitg2 = true;
+          exitg2 = 1;
         } else {
           j++;
         }
       }
 
       if (j + 1 > companDim) {
-        exitg1 = true;
+        exitg1 = 1;
       } else {
         k1++;
         companDim--;
@@ -3120,11 +3120,11 @@ static void cyperus_lowpass_module_roots_c(const float c[5], complex_float32_t r
   }
 }
 
-static boolean_T cyperus_lowpass_module_iseq(float x, float y)
+static uint8_t cyperus_lowpass_module_iseq(float x, float y)
 {
-  boolean_T p;
+  uint8_t p;
   float absxk;
-  int32_T b_exponent;
+  int32_t b_exponent;
   absxk = fabs(y / 2.0);
   if ((!rtIsInf(absxk)) && (!rtIsNaN(absxk))) {
     if (absxk <= 2.2250738585072014E-308) {
@@ -3139,9 +3139,9 @@ static boolean_T cyperus_lowpass_module_iseq(float x, float y)
 
   if ((fabs(y - x) < absxk) || (rtIsInf(x) && rtIsInf(y) && ((x > 0.0) == (y >
          0.0)))) {
-    p = true;
+    p = 1;
   } else {
-    p = false;
+    p = 0;
   }
 
   return p;
@@ -3150,8 +3150,8 @@ static boolean_T cyperus_lowpass_module_iseq(float x, float y)
 float rt_atan2d_snf(float u0, float u1)
 {
   float y;
-  int32_T u0_0;
-  int32_T u1_0;
+  int32_t u0_0;
+  int32_t u1_0;
   if (rtIsNaN(u0) || rtIsNaN(u1)) {
     y = (rtNaN);
   } else if (rtIsInf(u0) && rtIsInf(u1)) {
@@ -3183,12 +3183,12 @@ float rt_atan2d_snf(float u0, float u1)
   return y;
 }
 
-static boolean_T cyperus_lowpass_module_sortLE(const complex_float32_t v_data[], int32_T
-  idx1, int32_T idx2)
+static uint8_t cyperus_lowpass_module_sortLE(const complex_float32_t v_data[], int32_t
+  idx1, int32_t idx2)
 {
-  boolean_T p;
-  boolean_T SCALEB;
-  boolean_T SCALEA;
+  uint8_t p;
+  uint8_t SCALEB;
+  uint8_t SCALEA;
   float absar;
   float absai;
   float absbr;
@@ -3199,22 +3199,22 @@ static boolean_T cyperus_lowpass_module_sortLE(const complex_float32_t v_data[],
     p = (rtIsNaN(v_data[idx1 - 1].re) || rtIsNaN(v_data[idx1 - 1].im) ||
          ((!rtIsNaN(v_data[idx1 - 1].re)) && (!rtIsNaN(v_data[idx1 - 1].im))));
   } else if (rtIsNaN(v_data[idx1 - 1].re) || rtIsNaN(v_data[idx1 - 1].im)) {
-    p = false;
+    p = 0;
   } else {
     absar = fabs(v_data[idx1 - 1].re);
     if ((absar > 8.9884656743115785E+307) || (fabs(v_data[idx1 - 1].im) >
          8.9884656743115785E+307)) {
-      SCALEA = true;
+      SCALEA = 1;
     } else {
-      SCALEA = false;
+      SCALEA = 0;
     }
 
     absbr = fabs(v_data[idx2 - 1].re);
     if ((absbr > 8.9884656743115785E+307) || (fabs(v_data[idx2 - 1].im) >
          8.9884656743115785E+307)) {
-      SCALEB = true;
+      SCALEB = 1;
     } else {
-      SCALEB = false;
+      SCALEB = 0;
     }
 
     if (SCALEA || SCALEB) {
@@ -3306,26 +3306,26 @@ static boolean_T cyperus_lowpass_module_sortLE(const complex_float32_t v_data[],
   return p;
 }
 
-static void cyperus_lowpass_module_sort_c(complex_float32_t x_data[], int32_T *x_size)
+static void cyperus_lowpass_module_sort_c(complex_float32_t x_data[], int32_t *x_size)
 {
-  int32_T dim;
-  int32_T vlen;
+  int32_t dim;
+  int32_t vlen;
   complex_float32_t vwork_data[4];
-  int32_T vstride;
-  int32_T b_j;
-  int32_T n;
-  int32_T b_idx_data[4];
-  int32_T iwork_data[4];
-  int32_T i;
-  int32_T i2;
-  int32_T j;
-  int32_T pEnd;
-  int32_T p;
-  int32_T q;
-  int32_T qEnd;
-  int32_T kEnd;
+  int32_t vstride;
+  int32_t b_j;
+  int32_t n;
+  int32_t b_idx_data[4];
+  int32_t iwork_data[4];
+  int32_t i;
+  int32_t i2;
+  int32_t j;
+  int32_t pEnd;
+  int32_t p;
+  int32_t q;
+  int32_t qEnd;
+  int32_t kEnd;
   complex_float32_t xwork_data[4];
-  int32_T dim_idx_0;
+  int32_t dim_idx_0;
   dim = 2;
   if (*x_size != 1) {
     dim = 1;
@@ -3354,7 +3354,7 @@ static void cyperus_lowpass_module_sort_c(complex_float32_t x_data[], int32_T *x
     n = dim_idx_0 + 1;
     if (dim_idx_0 != 0) {
       if (0 <= dim_idx_0 - 1) {
-        memset(&b_idx_data[0], 0, dim_idx_0 * sizeof(int32_T));
+        memset(&b_idx_data[0], 0, dim_idx_0 * sizeof(int32_t));
       }
 
       for (i2 = 1; i2 <= dim_idx_0 - 1; i2 += 2) {
@@ -3438,20 +3438,20 @@ static void cyperus_lowpass_module_sort_c(complex_float32_t x_data[], int32_T *x
 }
 
 static void cyperus_lowpass_module_roots(const float c[3], complex_float32_t r_data[],
-  int32_T *r_size)
+  int32_t *r_size)
 {
-  int32_T k1;
-  int32_T k2;
-  int32_T nTrailingZeros;
-  int32_T companDim;
+  int32_t k1;
+  int32_t k2;
+  int32_t nTrailingZeros;
+  int32_t companDim;
   float ctmp[3];
-  int32_T j;
+  int32_t j;
   complex_float32_t a_data[4];
   complex_float32_t eiga_data[2];
   complex_float32_t tmp_data[4];
-  int32_T a_size[2];
-  boolean_T exitg1;
-  boolean_T exitg2;
+  int32_t a_size[2];
+  uint8_t exitg1;
+  uint8_t exitg2;
   r_data[0].re = 0.0;
   r_data[0].im = 0.0;
   r_data[1].re = 0.0;
@@ -3469,21 +3469,21 @@ static void cyperus_lowpass_module_roots(const float c[3], complex_float32_t r_d
   nTrailingZeros = 2 - k2;
   if (k1 < k2) {
     companDim = k2 - k1;
-    exitg1 = false;
+    exitg1 = 0;
     while ((!exitg1) && (companDim > 0)) {
       j = 0;
-      exitg2 = false;
+      exitg2 = 0;
       while ((!exitg2) && (j + 1 <= companDim)) {
         ctmp[j] = c[k1 + j] / c[k1 - 1];
         if (rtIsInf(fabs(ctmp[j]))) {
-          exitg2 = true;
+          exitg2 = 1;
         } else {
           j++;
         }
       }
 
       if (j + 1 > companDim) {
-        exitg1 = true;
+        exitg1 = 1;
       } else {
         k1++;
         companDim--;
@@ -3550,10 +3550,10 @@ static void cyperus_lowpass_module_roots(const float c[3], complex_float32_t r_d
 }
 
 static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
-  int32_T B_size[2], float A_data[], int32_T A_size[2])
+  int32_t B_size[2], float A_data[], int32_t A_size[2])
 {
   float No2;
-  int32_T nextidx;
+  int32_t nextidx;
   float Br_data[25];
   float Ar_data[25];
   complex_float32_t rs_data[4];
@@ -3561,25 +3561,25 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
   float Bf_data[25];
   float Af_data[25];
   float G_data[24];
-  int32_T e;
+  int32_t e;
   float w_data[15];
-  boolean_T y;
-  boolean_T x[2];
-  int32_T ncols;
-  int32_T ibmat;
+  uint8_t y;
+  uint8_t x[2];
+  int32_t ncols;
+  int32_t ibmat;
   complex_float32_t b_x_data[2];
   float Br[5];
   float Br_0[3];
-  boolean_T Bf_data_0[10];
-  int32_T loop_ub;
-  int32_T Bf_size[2];
-  int32_T Af_size[2];
-  int32_T Ar_size[2];
-  int32_T Br_size[2];
-  int32_T Af_size_0[2];
-  int32_T Bf_size_0[2];
-  int32_T Br_size_idx_0;
-  int32_T Ar_size_idx_0;
+  uint8_t Bf_data_0[10];
+  int32_t loop_ub;
+  int32_t Bf_size[2];
+  int32_t Af_size[2];
+  int32_t Ar_size[2];
+  int32_t Br_size[2];
+  int32_t Af_size_0[2];
+  int32_t Bf_size_0[2];
+  int32_t Br_size_idx_0;
+  int32_t Ar_size_idx_0;
   float p1_idx_1_re;
   float p1_idx_2_re;
   float p2_idx_1_re;
@@ -3588,19 +3588,19 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
   float p3_idx_2_re;
   float p4_idx_1_re;
   float p4_idx_2_re;
-  int32_T B_size_tmp;
-  int32_T loop_ub_tmp;
-  int32_T A_data_tmp;
+  int32_t B_size_tmp;
+  int32_t loop_ub_tmp;
+  int32_t A_data_tmp;
   float p1_idx_1_re_tmp;
   float p2_idx_1_re_tmp;
   float p3_idx_1_re_tmp;
   float p4_idx_1_re_tmp;
-  boolean_T guard1 = false;
-  boolean_T guard2 = false;
-  boolean_T exitg1;
+  uint8_t guard1 = 0;
+  uint8_t guard2 = 0;
+  uint8_t exitg1;
   No2 = N / 2.0;
   B_size[0] = 3;
-  B_size_tmp = (int32_T)No2;
+  B_size_tmp = (int32_t)No2;
   B_size[1] = B_size_tmp;
   loop_ub_tmp = 3 * B_size_tmp - 1;
   if (0 <= loop_ub_tmp) {
@@ -3629,19 +3629,19 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
   }
 
   cyperus_lowpass_module_all(Bf_data_0, Bf_size_0, x);
-  y = true;
+  y = 1;
   ibmat = 0;
-  exitg1 = false;
+  exitg1 = 0;
   while ((!exitg1) && (ibmat < 2)) {
     if (!x[ibmat]) {
-      y = false;
-      exitg1 = true;
+      y = 0;
+      exitg1 = 1;
     } else {
       ibmat++;
     }
   }
 
-  guard1 = false;
+  guard1 = 0;
   if (y) {
     loop_ub = Af_size[0];
     Af_size_0[0] = Af_size[0];
@@ -3654,11 +3654,11 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
 
     cyperus_lowpass_module_all(Bf_data_0, Af_size_0, x);
     ibmat = 0;
-    exitg1 = false;
+    exitg1 = 0;
     while ((!exitg1) && (ibmat < 2)) {
       if (!x[ibmat]) {
-        y = false;
-        exitg1 = true;
+        y = 0;
+        exitg1 = 1;
       } else {
         ibmat++;
       }
@@ -3681,10 +3681,10 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
         A_data[1 + A_data_tmp] = Af_data[(nextidx << 1) + ncols];
       }
     } else {
-      guard1 = true;
+      guard1 = 1;
     }
   } else {
-    guard1 = true;
+    guard1 = 1;
   }
 
   if (guard1) {
@@ -3776,19 +3776,19 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
     }
 
     cyperus_lowpass_module_all(Bf_data_0, Br_size, x);
-    y = true;
+    y = 1;
     ibmat = 0;
-    exitg1 = false;
+    exitg1 = 0;
     while ((!exitg1) && (ibmat < 2)) {
       if (!x[ibmat]) {
-        y = false;
-        exitg1 = true;
+        y = 0;
+        exitg1 = 1;
       } else {
         ibmat++;
       }
     }
 
-    guard2 = false;
+    guard2 = 0;
     if (y) {
       Ar_size[0] = Ar_size_idx_0;
       Ar_size[1] = 2;
@@ -3800,21 +3800,21 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
 
       cyperus_lowpass_module_all(Bf_data_0, Ar_size, x);
       ibmat = 0;
-      exitg1 = false;
+      exitg1 = 0;
       while ((!exitg1) && (ibmat < 2)) {
         if (!x[ibmat]) {
-          y = false;
-          exitg1 = true;
+          y = 0;
+          exitg1 = 1;
         } else {
           ibmat++;
         }
       }
 
       if (y) {
-        e = (int32_T)(((No2 - 1.0) + (2.0 - (float)nextidx)) / 2.0) - 1;
+        e = (int32_t)(((No2 - 1.0) + (2.0 - (float)nextidx)) / 2.0) - 1;
         for (ibmat = 0; ibmat <= e; ibmat++) {
           No2 = (float)ibmat * 2.0 + (float)nextidx;
-          ncols = (int32_T)ceil(No2 / 2.0);
+          ncols = (int32_t)ceil(No2 / 2.0);
           Br_0[0] = Br_data[ncols - 1];
           Br_0[1] = Br_data[((Br_size_idx_0 << 1) + ncols) - 1];
           Br_0[2] = Br_data[((Br_size_idx_0 << 2) + ncols) - 1];
@@ -3885,33 +3885,33 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
             p4_idx_1_re -= -rs2_data[1].re - p4_idx_1_re_tmp;
           }
 
-          ncols = 3 * ((int32_T)No2 - 1);
+          ncols = 3 * ((int32_t)No2 - 1);
           B_data[ncols] = 1.0;
           B_data[ncols + 1] = p1_idx_1_re;
           B_data[ncols + 2] = p1_idx_2_re;
-          A_data_tmp = ((int32_T)No2 - 1) << 1;
+          A_data_tmp = ((int32_t)No2 - 1) << 1;
           A_data[A_data_tmp] = p3_idx_1_re;
           A_data[A_data_tmp + 1] = p3_idx_2_re;
-          ncols = 3 * ((int32_T)(No2 + 1.0) - 1);
+          ncols = 3 * ((int32_t)(No2 + 1.0) - 1);
           B_data[ncols] = 1.0;
           B_data[ncols + 1] = p2_idx_1_re;
           B_data[ncols + 2] = p2_idx_2_re;
-          A_data_tmp = ((int32_T)(No2 + 1.0) - 1) << 1;
+          A_data_tmp = ((int32_t)(No2 + 1.0) - 1) << 1;
           A_data[A_data_tmp] = p4_idx_1_re;
           A_data[A_data_tmp + 1] = p4_idx_2_re;
         }
       } else {
-        guard2 = true;
+        guard2 = 1;
       }
     } else {
-      guard2 = true;
+      guard2 = 1;
     }
 
     if (guard2) {
-      ibmat = (int32_T)(((No2 - 1.0) + (2.0 - (float)nextidx)) / 2.0) - 1;
+      ibmat = (int32_t)(((No2 - 1.0) + (2.0 - (float)nextidx)) / 2.0) - 1;
       for (loop_ub_tmp = 0; loop_ub_tmp <= ibmat; loop_ub_tmp++) {
         No2 = (float)loop_ub_tmp * 2.0 + (float)nextidx;
-        ncols = (int32_T)ceil(No2 / 2.0);
+        ncols = (int32_t)ceil(No2 / 2.0);
         for (loop_ub = 0; loop_ub < 5; loop_ub++) {
           Br[loop_ub] = Br_data[(Br_size_idx_0 * loop_ub + ncols) - 1];
         }
@@ -3943,7 +3943,7 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
           p4_idx_1_re -= rs2_data[3].re - rs2_data[3].im * 0.0;
         }
 
-        e = (int32_T)No2;
+        e = (int32_t)No2;
         ncols = 3 * (e - 1);
         B_data[ncols] = 1.0;
         B_data[ncols + 1] = p1_idx_1_re;
@@ -3951,7 +3951,7 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
         A_data_tmp = (e - 1) << 1;
         A_data[A_data_tmp] = p3_idx_1_re;
         A_data[A_data_tmp + 1] = p3_idx_2_re;
-        e = (int32_T)(No2 + 1.0);
+        e = (int32_t)(No2 + 1.0);
         ncols = 3 * (e - 1);
         B_data[ncols] = 1.0;
         B_data[ncols + 1] = p2_idx_1_re;
@@ -3973,14 +3973,14 @@ static void cyperus_lowpa_designEachParamEQ(float N, float BW, float B_data[],
 static void cyperus_lo_designVarSlopeFilter(float Slope, float Fc, float B[12],
   float A[8])
 {
-  int32_T N;
+  int32_t N;
   float b_B_data[24];
   float b_A_data[16];
   float b;
-  int32_T i;
-  int32_T b_B_size[2];
-  int32_T b_A_size[2];
-  int32_T A_tmp;
+  int32_t i;
+  int32_t b_B_size[2];
+  int32_t b_A_size[2];
+  int32_t A_tmp;
   if (!(Fc < 1.0)) {
     Fc = 1.0;
   }
@@ -4019,7 +4019,7 @@ static void cyperus_lo_designVarSlopeFilter(float Slope, float Fc, float B[12],
 
     cyperus_lowpa_designEachParamEQ((float)N, b, b_B_data, b_B_size, b_A_data,
       b_A_size);
-    N = (int32_T)ceil((float)N / 4.0);
+    N = (int32_t)ceil((float)N / 4.0);
     for (i = 0; i < N; i++) {
       B[3 * i] = b_B_data[3 * i];
       B[1 + 3 * i] = b_B_data[3 * i + 1];
@@ -4052,9 +4052,8 @@ void cyperus_filter_varslope_lowpass_edit(struct cyperus_parameters *filter) {
 float cyperus_filter_varslope_lowpass(struct cyperus_parameters *filter, int samplerate, int pos) {
   float insample = filter->in;
   
-  char_T *sErr;
   void *audio;
-  boolean_T flag;
+  uint8_t flag;
   float Fs;
   float Slope;
   int i;

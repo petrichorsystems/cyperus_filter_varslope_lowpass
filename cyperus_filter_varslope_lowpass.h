@@ -25,8 +25,6 @@
 #ifndef cyperus_lowpass_module_COMMON_INCLUDES_
 # define cyperus_lowpass_module_COMMON_INCLUDES_
 
-#include "rtwtypes.h"
-
 #endif                             /* cyperus_lowpass_module_COMMON_INCLUDES_ */
 
 /* Shared type includes */

@@ -21,8 +21,6 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#include "rtwtypes.h"
-
 extern float rtGetNaN(void);
 extern float rtGetNaNF(void);
 extern float rtGetInf(void);
@@ -37,10 +35,10 @@ extern float rtInfF;
 extern float rtMinusInfF;
 extern float rtNaNF;
 extern void rt_InitInfAndNaN(size_t realSize);
-extern boolean_T rtIsInf(float value);
-extern boolean_T rtIsInfF(float value);
-extern boolean_T rtIsNaN(float value);
-extern boolean_T rtIsNaNF(float value);
+extern uint8_t rtIsInf(float value);
+extern uint8_t rtIsInfF(float value);
+extern uint8_t rtIsNaN(float value);
+extern uint8_t rtIsNaNF(float value);
 
 typedef struct {
   struct {
